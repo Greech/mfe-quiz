@@ -112,8 +112,8 @@ const thresholds = [
       en: '✅ YES – but only if you know what you’re doing.',
     },
     description: {
-      pl: 'Twoje odpowiedzi wskazują na dużą liczbę zespołów... (PL)',
-      en: 'Your answers show many teams, autonomy... (EN)',
+      pl: 'Twoje odpowiedzi wskazują na dużą liczbę zespołów, niezależność modułów i potrzebę niezależnych deployów. Jeśli masz dojrzałość operacyjną, warto pójść w Micro Frontendy (ale z jasno zdefiniowaną odpowiedzialnością, testami end-to-end i orkiestratorem).',
+      en: 'Your answers indicate many teams, modular autonomy, and a need for independent deployments. If you have operational maturity, Micro Frontends make sense – but with clear responsibilities, e2e testing, and an orchestrator.',
     },
   },
   {
@@ -123,8 +123,8 @@ const thresholds = [
       en: '⚠️ Maybe – but only at scale.',
     },
     description: {
-      pl: 'Jest potencjał do MFE, ale tylko jeśli... (PL)',
-      en: 'There’s potential for MFE, but only if... (EN)',
+      pl: 'Jest potencjał do MFE, ale tylko jeśli planujesz duże zespoły, długi cykl życia aplikacji i silną potrzebę skalowania niezależnych domen. W innym wypadku to overengineering.',
+      en: 'There’s potential for MFE, but only if you plan for large teams, long app lifecycle, and a need to scale separate domains. Otherwise, it’s likely overengineering.',
     },
   },
   {
@@ -134,8 +134,8 @@ const thresholds = [
       en: '🔧 Start with Nx/Monorepo – leave MFE for later.',
     },
     description: {
-      pl: 'Masz czas, jeden stack... (PL)',
-      en: 'You have time, a single stack... (EN)',
+      pl: 'Masz czas, jeden stack, niezły poziom organizacji – to idealne środowisko na monorepo + modularyzację. MFE może być kolejnym krokiem, ale nie startuj z nim od razu.',
+      en: 'You’ve got time, one stack, and decent org structure – that’s a great start for monorepo + modular design. MFE could come later, but don’t lead with it.',
     },
   },
   {
@@ -145,8 +145,8 @@ const thresholds = [
       en: '❌ NO – it would be architectural overkill.',
     },
     description: {
-      pl: 'Masz jeden zespół, wspólny stack... (PL)',
-      en: 'You have one team, one stack... (EN)',
+      pl: 'Masz jeden zespół, wspólny stack i niski poziom niezależności. Micro Frontendy nie rozwiążą twoich problemów – raczej je zwiększą. Skup się na dobrej architekturze modułowej i automatyzacji.',
+      en: 'You have one team, one stack, and low autonomy. MFE won’t solve your problems – it’ll likely create more. Focus on modular architecture and automation instead.',
     },
   },
 ];
