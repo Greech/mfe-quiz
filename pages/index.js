@@ -13,45 +13,85 @@ const translations = {
     questions: [
       {
         question: 'Ilu niezależnych zespołów frontendowych pracuje nad tą samą aplikacją lub jej modułami?',
-        options: ['1 zespół', '2–3 zespoły', 'Więcej niż 3 zespoły'],
+        options: [
+          { key: 'one_team', label: '1 zespół', value: 0 },
+          { key: 'two_three_teams', label: '2–3 zespoły', value: 2 },
+          { key: 'more_than_three', label: 'Więcej niż 3 zespoły', value: 3 },
+        ],
       },
       {
         question: 'Czy zespoły frontendowe pracują w różnych technologiach (np. Angular, React, Vue)?',
-        options: ['Tak, celowo', 'Nie, mamy jeden stack', 'Jeszcze nie, ale planujemy migracje lub integracje'],
+        options: [
+          { key: 'multi_stack', label: 'Tak, celowo', value: 2 },
+          { key: 'single_stack', label: 'Nie, mamy jeden stack', value: 0 },
+          { key: 'future_migration', label: 'Jeszcze nie, ale planujemy migracje lub integracje', value: 1 },
+        ],
       },
       {
         question: 'Jak duża jest autonomia poszczególnych modułów lub domen biznesowych?',
-        options: ['Moduły są w pełni niezależne', 'Moduły mają część współdzielonego kodu', 'Kod jest totalnie spleciony – wszystko zależy od wszystkiego'],
+        options: [
+          { key: 'full_independence', label: 'Moduły są w pełni niezależne', value: 3 },
+          { key: 'partial_shared', label: 'Moduły mają część współdzielonego kodu', value: 1 },
+          { key: 'tight_coupling', label: 'Kod jest totalnie spleciony – wszystko zależy od wszystkiego', value: 0 },
+        ],
       },
       {
         question: 'Jak często różne zespoły muszą się koordynować przed deployem?',
-        options: ['Każdy deployuje sam', 'Czasem trzeba się zsynchronizować', 'Zawsze musimy robić wspólny release'],
+        options: [
+          { key: 'independent_deploy', label: 'Każdy deployuje sam', value: 3 },
+          { key: 'sometimes_sync', label: 'Czasem trzeba się zsynchronizować', value: 1 },
+          { key: 'always_sync', label: 'Zawsze musimy robić wspólny release', value: 0 },
+        ],
       },
       {
         question: 'Jaką macie presję czasową na dostarczenie pierwszej wersji?',
-        options: ['Potrzebujemy MVP w kilka tygodni', 'Możemy planować długofalowo', 'Ważne jest skalowanie i długowieczność, nie szybkość'],
+        options: [
+          { key: 'fast_mvp', label: 'Potrzebujemy MVP w kilka tygodni', value: 0 },
+          { key: 'long_term', label: 'Możemy planować długofalowo', value: 1 },
+          { key: 'scalability_priority', label: 'Ważne jest skalowanie i długowieczność, nie szybkość', value: 2 },
+        ],
       },
       {
         question: 'Czy Twoja aplikacja musi być dobrze indeksowana przez wyszukiwarki (SEO) lub obsługiwać SSR?',
-        options: ['Tak, SEO to klucz', 'Nie, to aplikacja tylko dla zalogowanych', 'Nie wiem, ale chcemy mieć opcję'],
+        options: [
+          { key: 'seo_needed', label: 'Tak, SEO to klucz', value: 0 },
+          { key: 'internal_app', label: 'Nie, to aplikacja tylko dla zalogowanych', value: 2 },
+          { key: 'optional_seo', label: 'Nie wiem, ale chcemy mieć opcję', value: 1 },
+        ],
       },
       {
         question: 'Jak oceniasz swoje doświadczenie z architekturą MFE (Module Federation, Single-SPA, itp.)?',
-        options: ['Mam doświadczenie i wiem, co robię', 'Teoretycznie wiem, ale nie wdrażałem(a)m', 'Brzmi jak koszmar DevOpsów'],
+        options: [
+          { key: 'experienced', label: 'Mam doświadczenie i wiem, co robię', value: 3 },
+          { key: 'basic_theory', label: 'Teoretycznie wiem, ale nie wdrażałem(a)m', value: 1 },
+          { key: 'no_experience', label: 'Brzmi jak koszmar DevOpsów', value: 0 },
+        ],
       },
       {
         question: 'Czy kiedykolwiek mieliście problem z tym, że jeden feature opóźnia deploy całej aplikacji?',
-        options: ['Tak, często', 'Sporadycznie', 'Nie, mamy dobrze podzielony kod'],
+        options: [
+          { key: 'often_blocked', label: 'Tak, często', value: 3 },
+          { key: 'rarely_blocked', label: 'Sporadycznie', value: 1 },
+          { key: 'no_blocking', label: 'Nie, mamy dobrze podzielony kod', value: 0 },
+        ],
       },
       {
         question: 'Jak często zmieniacie UX/UI tylko w jednym module bez ruszania reszty?',
-        options: ['Regularnie – to u nas norma', 'Raczej rzadko', 'To niemożliwe przy naszej strukturze'],
+        options: [
+          { key: 'frequent_ui_isolation', label: 'Regularnie – to u nas norma', value: 3 },
+          { key: 'rare_ui_isolation', label: 'Raczej rzadko', value: 1 },
+          { key: 'impossible_ui_isolation', label: 'To niemożliwe przy naszej strukturze', value: 0 },
+        ],
       },
       {
         question: 'Czy twój zespół ma dojrzałość operacyjną do zarządzania wersjowaniem, integracją i testami MFE?',
-        options: ['Tak – mamy procesy i narzędzia', 'Nie, ale chcemy to zbudować', 'Nie – to byłby chaos'],
+        options: [
+          { key: 'mature_ops', label: 'Tak – mamy procesy i narzędzia', value: 3 },
+          { key: 'willing_to_mature', label: 'Nie, ale chcemy to zbudować', value: 1 },
+          { key: 'chaos', label: 'Nie – to byłby chaos', value: 0 },
+        ],
       },
-    ],
+    ]
   },
   en: {
     title: 'Do I need Micro Frontends?',
@@ -62,51 +102,91 @@ const translations = {
     questions: [
       {
         question: 'How many independent frontend teams work on the same app or its modules?',
-        options: ['1 team', '2–3 teams', 'More than 3 teams'],
+        options: [
+          { key: 'one_team', label: '1 team', value: 0 },
+          { key: 'two_three_teams', label: '2–3 teams', value: 2 },
+          { key: 'more_than_three', label: 'More than 3 teams', value: 3 },
+        ],
       },
       {
         question: 'Do frontend teams work in different tech stacks (e.g. Angular, React, Vue)?',
-        options: ['Yes, by design', 'No, we use a single stack', 'Not yet, but we plan migration/integration'],
+        options: [
+          { key: 'multi_stack', label: 'Yes, by design', value: 2 },
+          { key: 'single_stack', label: 'No, we use a single stack', value: 0 },
+          { key: 'future_migration', label: 'Not yet, but we plan migration/integration', value: 1 },
+        ],
       },
       {
         question: 'How autonomous are your modules or business domains?',
-        options: ['Fully independent modules', 'Some shared code between modules', 'Everything is tightly coupled'],
+        options: [
+          { key: 'full_independence', label: 'Fully independent modules', value: 3 },
+          { key: 'partial_shared', label: 'Some shared code between modules', value: 1 },
+          { key: 'tight_coupling', label: 'Everything is tightly coupled', value: 0 },
+        ],
       },
       {
         question: 'How often do teams need to coordinate before deploying?',
-        options: ['Each team deploys independently', 'Occasional coordination needed', 'Always a joint release'],
+        options: [
+          { key: 'independent_deploy', label: 'Each team deploys independently', value: 3 },
+          { key: 'sometimes_sync', label: 'Occasional coordination needed', value: 1 },
+          { key: 'always_sync', label: 'Always a joint release', value: 0 },
+        ],
       },
       {
         question: 'What’s the time pressure to deliver the first version?',
-        options: ['Need MVP in weeks', 'We can plan long-term', 'Scalability and longevity matter most'],
+        options: [
+          { key: 'fast_mvp', label: 'Need MVP in weeks', value: 0 },
+          { key: 'long_term', label: 'We can plan long-term', value: 1 },
+          { key: 'scalability_priority', label: 'Scalability and longevity matter most', value: 2 },
+        ],
       },
       {
         question: 'Does your app need SEO or server-side rendering (SSR)?',
-        options: ['Yes, SEO is key', 'No, it’s for logged-in users only', 'Not sure, but we want the option'],
+        options: [
+          { key: 'seo_needed', label: 'Yes, SEO is key', value: 0 },
+          { key: 'internal_app', label: 'No, it’s for logged-in users only', value: 2 },
+          { key: 'optional_seo', label: 'Not sure, but we want the option', value: 1 },
+        ],
       },
       {
         question: 'How would you rate your experience with MFE architecture (Module Federation, Single-SPA, etc.)?',
-        options: ['Experienced and confident', 'Familiar but never used', 'Sounds like a DevOps nightmare'],
+        options: [
+          { key: 'experienced', label: 'Experienced and confident', value: 3 },
+          { key: 'basic_theory', label: 'Familiar but never used', value: 1 },
+          { key: 'no_experience', label: 'Sounds like a DevOps nightmare', value: 0 },
+        ],
       },
       {
         question: 'Have you had issues where one feature delays the whole app deployment?',
-        options: ['Yes, often', 'Sometimes', 'No, code is well split'],
+        options: [
+          { key: 'often_blocked', label: 'Yes, often', value: 3 },
+          { key: 'rarely_blocked', label: 'Sometimes', value: 1 },
+          { key: 'no_blocking', label: 'No, code is well split', value: 0 },
+        ],
       },
       {
         question: 'How often do you change UX/UI in just one module without touching others?',
-        options: ['Regularly – it’s our norm', 'Rarely', 'Impossible with current setup'],
+        options: [
+          { key: 'frequent_ui_isolation', label: 'Regularly – it’s our norm', value: 3 },
+          { key: 'rare_ui_isolation', label: 'Rarely', value: 1 },
+          { key: 'impossible_ui_isolation', label: 'Impossible with current setup', value: 0 },
+        ],
       },
       {
         question: 'Does your team have operational maturity to handle MFE versioning, integration and testing?',
-        options: ['Yes – with proper tools and processes', 'No, but we aim to build it', 'No – it’d be chaos'],
+        options: [
+          { key: 'mature_ops', label: 'Yes – with proper tools and processes', value: 3 },
+          { key: 'willing_to_mature', label: 'No, but we aim to build it', value: 1 },
+          { key: 'chaos', label: 'No – it’d be chaos', value: 0 },
+        ],
       },
-    ],
+    ]
   },
 };
 
 const thresholds = [
   {
-    min: 25,
+    min: 20,
     title: {
       pl: '✅ TAK – ale tylko jeśli wiesz, co robisz.',
       en: '✅ YES – but only if you know what you’re doing.',
@@ -117,7 +197,7 @@ const thresholds = [
     },
   },
   {
-    min: 15,
+    min: 12,
     title: {
       pl: '⚠️ Być może – ale tylko w dużej skali.',
       en: '⚠️ Maybe – but only at scale.',
@@ -128,7 +208,7 @@ const thresholds = [
     },
   },
   {
-    min: 5,
+    min: 6,
     title: {
       pl: '🔧 Zacznij od Nx/Monorepo – MFE zostaw na później.',
       en: '🔧 Start with Nx/Monorepo – leave MFE for later.',
@@ -176,10 +256,10 @@ export default function Home() {
   const t = translations[language];
   const currentQuestions = t.questions;
 
-  const handleAnswer = (option, scoreValue) => {
-    const updatedAnswers = [...answers, option];
+  const handleAnswer = (answer) => {
+    const updatedAnswers = [...answers, answer.key];
     setAnswers(updatedAnswers);
-    setScore(score + scoreValue);
+    setScore(score + answer.value);
     if (step + 1 >= currentQuestions.length) {
       setShowResult(true);
     } else {
@@ -230,15 +310,15 @@ export default function Home() {
               <CardContent className="p-4">
                 <p className="font-medium mb-4">{currentQuestions[step].question}</p>
                 <div className="flex flex-col gap-2">
-                  {currentQuestions[step].options.map((option, index) => (
-                    <Button
-                      key={index}
-                      onClick={() => handleAnswer(option, index)}
-                      variant="outline"
-                    >
-                      {option}
-                    </Button>
-                  ))}
+                {currentQuestions[step].options.map((option, index) => (
+                  <Button
+                    key={index}
+                    onClick={() => handleAnswer(option)}
+                    variant="outline"
+                  >
+                    {option.label}
+                  </Button>
+                ))}
                 </div>
               </CardContent>
             </Card>
@@ -262,7 +342,11 @@ export default function Home() {
                     {currentQuestions.map((q, i) => (
                       <div key={i}>
                         <p className="font-medium">{i + 1}. {q.question}</p>
-                        <p className="text-muted-foreground mt-1">{answers[i]}</p>
+                        <p className="text-muted-foreground mt-1">
+                          {
+                            currentQuestions[i].options.find((opt) => opt.key === answers[i])?.label
+                          }
+                        </p>
                       </div>
                     ))}
                   </div>
