@@ -1,16 +1,19 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { questions } from '../data/questions';
-import { results } from '../data/results';
+import { getQuestions } from '../data/questions';
+import { getResults } from '../data/results';
 import { calculateScore, determineResult } from '../utils/scoring';
 import { QuestionCard } from '../components/QuestionCard';
 import { ResultCard } from '../components/ResultCard';
 
 export default function Home() {
+  const language = 'pl';
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
+  const questions = getQuestions(language);
+  const results = getResults(language);
 
   const handleAnswer = (option) => {
     const updatedAnswers = [...answers, option];
@@ -29,7 +32,7 @@ export default function Home() {
   };
 
   const score = calculateScore(answers);
-  const finalResult = determineResult(score, results);
+  const finalResult = determineResult(score, results, language);
 
   return (
     <div className="p-6 max-w-xl mx-auto">

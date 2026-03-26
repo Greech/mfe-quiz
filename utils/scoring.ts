@@ -8,9 +8,19 @@ export const calculateScore = (answers) => {
   }, {});
 };
 
-export const determineResult = (score, results) => {
-  return results.find((r) => r.condition(score)) || {
+const defaultResultsByLanguage = {
+  pl: {
     title: '🤔 Nie wiem',
     description: 'Twoje odpowiedzi nie pasują do żadnego wzorca...',
+  },
+  en: {
+    title: '🤔 Not sure',
+    description: 'Your answers do not match any clear recommendation pattern...',
+  },
+};
+
+export const determineResult = (score, results, language = 'pl') => {
+  return results.find((r) => r.condition(score)) || {
+    ...(defaultResultsByLanguage[language] || defaultResultsByLanguage.pl),
   };
 };
