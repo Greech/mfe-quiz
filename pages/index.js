@@ -9,6 +9,7 @@ const translations = {
     subtitle: 'czyli czy naprawdę musisz dzielić swój kod na kawałki... już teraz?',
     yourAnswers: 'Twoje odpowiedzi',
     thresholds: 'Progi rekomendacji (thresholds)',
+    pointsLabel: 'pkt',
     retry: 'Zrób quiz jeszcze raz',
     questions: [
       {
@@ -94,11 +95,12 @@ const translations = {
     ]
   },
   en: {
-    title: 'Do I need Micro Frontends?',
-    subtitle: 'or are you just overengineering from day one?',
+    title: 'Do I Need Micro Frontends?',
+    subtitle: 'or are you splitting your frontend too early?',
     yourAnswers: 'Your answers',
-    thresholds: 'Threshold recommendations',
-    retry: 'Retry the quiz',
+    thresholds: 'Recommendation thresholds',
+    pointsLabel: 'pts',
+    retry: 'Take the quiz again',
     questions: [
       {
         question: 'How many independent frontend teams work on the same app or its modules?',
@@ -113,7 +115,7 @@ const translations = {
         options: [
           { key: 'multi_stack', label: 'Yes, by design', value: 2 },
           { key: 'single_stack', label: 'No, we use a single stack', value: 0 },
-          { key: 'future_migration', label: 'Not yet, but we plan migration/integration', value: 1 },
+          { key: 'future_migration', label: 'Not yet, but we plan migrations or integrations', value: 1 },
         ],
       },
       {
@@ -128,7 +130,7 @@ const translations = {
         question: 'How often do teams need to coordinate before deploying?',
         options: [
           { key: 'independent_deploy', label: 'Each team deploys independently', value: 3 },
-          { key: 'sometimes_sync', label: 'Occasional coordination needed', value: 1 },
+          { key: 'sometimes_sync', label: 'Sometimes we need to sync', value: 1 },
           { key: 'always_sync', label: 'Always a joint release', value: 0 },
         ],
       },
@@ -151,8 +153,8 @@ const translations = {
       {
         question: 'How would you rate your experience with MFE architecture (Module Federation, Single-SPA, etc.)?',
         options: [
-          { key: 'experienced', label: 'Experienced and confident', value: 3 },
-          { key: 'basic_theory', label: 'Familiar but never used', value: 1 },
+          { key: 'experienced', label: 'I have experience and know what I am doing', value: 3 },
+          { key: 'basic_theory', label: 'I know the theory, but have not implemented it', value: 1 },
           { key: 'no_experience', label: 'Sounds like a DevOps nightmare', value: 0 },
         ],
       },
@@ -160,7 +162,7 @@ const translations = {
         question: 'Have you had issues where one feature delays the whole app deployment?',
         options: [
           { key: 'often_blocked', label: 'Yes, often', value: 3 },
-          { key: 'rarely_blocked', label: 'Sometimes', value: 1 },
+          { key: 'rarely_blocked', label: 'Occasionally', value: 1 },
           { key: 'no_blocking', label: 'No, code is well split', value: 0 },
         ],
       },
@@ -175,8 +177,8 @@ const translations = {
       {
         question: 'Does your team have operational maturity to handle MFE versioning, integration and testing?',
         options: [
-          { key: 'mature_ops', label: 'Yes – with proper tools and processes', value: 3 },
-          { key: 'willing_to_mature', label: 'No, but we aim to build it', value: 1 },
+          { key: 'mature_ops', label: 'Yes - we have the right tools and processes', value: 3 },
+          { key: 'willing_to_mature', label: 'Not yet, but we want to build it', value: 1 },
           { key: 'chaos', label: 'No – it’d be chaos', value: 0 },
         ],
       },
@@ -189,44 +191,44 @@ const thresholds = [
     min: 20,
     title: {
       pl: '✅ TAK – ale tylko jeśli wiesz, co robisz.',
-      en: '✅ YES – but only if you know what you’re doing.',
+      en: '✅ YES - but only if you know what you are doing.',
     },
     description: {
       pl: 'Twoje odpowiedzi wskazują na dużą liczbę zespołów, niezależność modułów i potrzebę niezależnych deployów. Jeśli masz dojrzałość operacyjną, warto pójść w Micro Frontendy (ale z jasno zdefiniowaną odpowiedzialnością, testami end-to-end i orkiestratorem).',
-      en: 'Your answers indicate many teams, modular autonomy, and a need for independent deployments. If you have operational maturity, Micro Frontends make sense – but with clear responsibilities, e2e testing, and an orchestrator.',
+      en: 'Your answers indicate many teams, strong module autonomy, and a need for independent deployments. If you have operational maturity, Micro Frontends can make sense - but only with clear ownership, end-to-end tests, and an orchestrator.',
     },
   },
   {
     min: 12,
     title: {
       pl: '⚠️ Być może – ale tylko w dużej skali.',
-      en: '⚠️ Maybe – but only at scale.',
+      en: '⚠️ MAYBE - but only at scale.',
     },
     description: {
       pl: 'Jest potencjał do MFE, ale tylko jeśli planujesz duże zespoły, długi cykl życia aplikacji i silną potrzebę skalowania niezależnych domen. W innym wypadku to overengineering.',
-      en: 'There’s potential for MFE, but only if you plan for large teams, long app lifecycle, and a need to scale separate domains. Otherwise, it’s likely overengineering.',
+      en: 'There is potential for MFE, but mostly if you expect larger teams, a long product lifecycle, and a strong need to scale independent domains. Otherwise, this is likely overengineering.',
     },
   },
   {
     min: 6,
     title: {
       pl: '🔧 Zacznij od Nx/Monorepo – MFE zostaw na później.',
-      en: '🔧 Start with Nx/Monorepo – leave MFE for later.',
+      en: '🔧 START with Nx/Monorepo - leave MFE for later.',
     },
     description: {
       pl: 'Masz czas, jeden stack, niezły poziom organizacji – to idealne środowisko na monorepo + modularyzację. MFE może być kolejnym krokiem, ale nie startuj z nim od razu.',
-      en: 'You’ve got time, one stack, and decent org structure – that’s a great start for monorepo + modular design. MFE could come later, but don’t lead with it.',
+      en: 'You have time, one stack, and a decent team setup - that is an ideal environment for a monorepo and modular architecture. MFE can be a later step, but it should not be your starting point.',
     },
   },
   {
     min: 0,
     title: {
       pl: '❌ NIE – to byłaby architektoniczna nadprodukcja.',
-      en: '❌ NO – it would be architectural overkill.',
+      en: '❌ NO - this would be architectural overkill.',
     },
     description: {
       pl: 'Masz jeden zespół, wspólny stack i niski poziom niezależności. Micro Frontendy nie rozwiążą twoich problemów – raczej je zwiększą. Skup się na dobrej architekturze modułowej i automatyzacji.',
-      en: 'You have one team, one stack, and low autonomy. MFE won’t solve your problems – it’ll likely create more. Focus on modular architecture and automation instead.',
+      en: 'You have one team, one stack, and low autonomy. MFE will not solve your current problems - it will likely create new ones. Focus on a clean modular architecture and automation first.',
     },
   },
 ];
@@ -236,11 +238,11 @@ function getFinalRecommendation(score, lang) {
     thresholds.find((t) => score >= t.min) || {
       title: {
         pl: 'Nie wiem, ale pewnie i tak to zrobisz…',
-        en: 'No idea, but you’ll probably do it anyway…',
+        en: 'Not sure, but you will probably build it anyway...',
       },
       description: {
         pl: 'Nie jestem w stanie zdecydować...',
-        en: 'Can’t decide, so not even trying!',
+        en: 'I cannot confidently decide based on these answers.',
       },
     }
   );
@@ -357,7 +359,7 @@ export default function Home() {
                   <div className="mt-4 space-y-4">
                     {thresholds.map((th, idx) => (
                       <div key={idx}>
-                        <p className="font-semibold">{th.min}+ pts – {th.title[language]}</p>
+                        <p className="font-semibold">{th.min}+ {t.pointsLabel} – {th.title[language]}</p>
                         <p className="text-muted-foreground mt-1">{th.description[language]}</p>
                       </div>
                     ))}
